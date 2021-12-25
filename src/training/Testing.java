@@ -1,15 +1,30 @@
 package training;
 
-import java.util.Arrays;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Testing {
     public static void main(String[] args) {
 
-        System.out.println(Arrays.toString(findAllIndexes(new int[]{1, 2, 5, 4, 5, 6, 5, 7}, 5, 0, 0)));
+        System.out.println(Arrays.toString(findAllIndexesList(new int[]{1, 2, 5, 4, 5, 6, 5, 7}, 5, 0).toArray()));
+    }
+
+    private static List<Integer> findAllIndexesList(int[] arr, int toMatch, int index) {
+        if (arr.length == index) {
+            return new ArrayList<>();
+        }
+
+        List<Integer> tempList = findAllIndexesList(arr, toMatch, index + 1);
+        if (arr[index] == toMatch) {
+            tempList.add(index);
+        }
+        Collections.reverse(tempList); // just to make it in order
+        return tempList;
     }
 
     // find indexes of all occurrence
     private static int[] findAllIndexes(int[] arr, int toMatch, int index, int foundSoFar) {
+//        System.out.println(Arrays.toString(findAllIndexes(new int[]{1, 2, 5, 4, 5, 6, 5, 7}, 5, 0, 0)));
         if (arr.length == index) {
             return new int[foundSoFar];
         }
