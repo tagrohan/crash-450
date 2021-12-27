@@ -6,10 +6,34 @@ import java.util.*;
 public class Testing {
     public static void main(String[] args) {
 
-        System.out.println(Arrays.toString(findAllIndexesList(new int[]{1, 2, 5, 4, 5, 6, 5, 7}, 5, 0).toArray()));
+        System.out.println(Arrays.toString(getStairPath(5, "").toArray()));
     }
 
+
+    private static List<String> getStairPath(int staircase, String psf) {
+        if (staircase < 0) {
+            return List.of();
+        }
+        if (staircase == 0) {
+//            List<String> list = new ArrayList<>();
+//            list.add(psf);
+            return List.of(psf);
+//            return list;
+        }
+
+        List<String> oneStep = getStairPath(staircase - 1, psf + " 1");
+        List<String> twoStep = getStairPath(staircase - 2, psf + " 2");
+        List<String> threeStep = getStairPath(staircase - 3, psf + " 3");
+        List<String> res = new ArrayList<>();
+        res.addAll(oneStep);
+        res.addAll(twoStep);
+        res.addAll(threeStep);
+        return res;
+    }
+
+
     private static List<Integer> findAllIndexesList(int[] arr, int toMatch, int index) {
+//        System.out.println(Arrays.toString(findAllIndexesList(new int[]{1, 2, 5, 4, 5, 6, 5, 7}, 5, 0).toArray()));
         if (arr.length == index) {
             return new ArrayList<>();
         }
