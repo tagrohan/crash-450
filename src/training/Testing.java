@@ -1,6 +1,5 @@
 package training;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Testing {
@@ -11,15 +10,8 @@ public class Testing {
 
 
     private static List<String> getStairPath(int staircase, String psf) {
-        if (staircase < 0) {
-            return List.of();
-        }
-        if (staircase == 0) {
-//            List<String> list = new ArrayList<>();
-//            list.add(psf);
-            return List.of(psf);
-//            return list;
-        }
+        if (staircase < 0) return List.of();
+        if (staircase == 0) return List.of(psf);
 
         List<String> oneStep = getStairPath(staircase - 1, psf + " 1");
         List<String> twoStep = getStairPath(staircase - 2, psf + " 2");
