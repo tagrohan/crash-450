@@ -5,22 +5,30 @@ import java.util.Arrays;
 public class Test {
     public static void main(String[] args) {
 
-        System.out.println(Arrays.toString(rev(new int[]{1,2,2}, 0)));
+        System.out.println(isPalindrome("malayalam", 0));
     }
 
+    private static boolean isPalindrome(String str, int index) {
+//        System.out.println(isPalindrome("malayalam", 0));
+        if (str.length() / 2 == index) return true;
+        if (str.charAt(index) != str.charAt(str.length() - index - 1)) return false;
+        return isPalindrome(str, index + 1);
+    }
 
     private static int[] rev(int[] arr, int index) { // 1 2 3 4 5
-//        System.out.println(Arrays.toString(rev(new int[]{1,2,2}, 0)));
+//        System.out.println(Arrays.toString(rev(new int[]{1, 2, 3, 4, 5}, 0)));
         if (arr.length / 2 <= index) {               //  2 <= 0
             return arr;
         }
-        // swap here
-        int start = arr[index];                 // start = 1
-        arr[index] = arr[arr.length - index - 1];  // arr[0] = arr[4]
-        arr[arr.length - index - 1] = start;      // arr[4] = start
-
+        swap(arr, index, arr.length);
         return rev(arr, index + 1);
 
+    }
+
+    private static void swap(int[] arr, int from, int to) {
+        int start = arr[from];                 // start = 1
+        arr[from] = arr[to - from - 1];  // arr[0] = arr[4]
+        arr[to - from - 1] = start;
     }
 
     private static int sum(int start, int end) {
