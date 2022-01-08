@@ -2,8 +2,18 @@ package arrays;
 
 public class Test {
     public static void main(String[] args) {
-        System.out.println(factorial(5));
+        print1ToN(1, 5);
     }
+
+
+    private static void print1ToN(int start, int end) {
+//        print1ToN(1, 5);
+        if (start > end) return;
+
+        System.out.println(start);
+        print1ToN(start + 1, end);
+    }
+
 
     private static int factorial(int num) {
         if (num <= 0) return 1;
