@@ -2,7 +2,15 @@ package arrays;
 
 public class Test {
     public static void main(String[] args) {
-        print1ToN(1, 5);
+        System.out.println(sum(1, 4));
+    }
+
+    private static int sum(int start, int end) {
+        if (start > end) {
+            return 0;
+        }
+        int temp = sum(start + 1, end);
+        return temp + start;
     }
 
 
