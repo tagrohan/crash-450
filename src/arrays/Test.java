@@ -5,8 +5,17 @@ import java.util.Arrays;
 public class Test {
     public static void main(String[] args) {
 
-        System.out.println(isPalindrome("malayalam", 0));
+        System.out.println(isPalindrome("mayam", 0, 4));
     }
+
+
+    private static boolean isPalindrome(String str, int left, int right) {
+//        System.out.println(isPalindrome("mayam", 0, 4));
+        if (left == right) return true;
+        if (str.charAt(left) != str.charAt(right)) return false;
+        return isPalindrome(str, left + 1, right - 1);
+    }
+
 
     private static boolean isPalindrome(String str, int index) {
 //        System.out.println(isPalindrome("malayalam", 0));
